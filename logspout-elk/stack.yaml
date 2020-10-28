@@ -17,7 +17,7 @@ services:
     networks:
       - elasticsearch
     volumes:
-      #  - ${REMOTE_MOUNT}/${STACK_NAME}/elasticsearch/data:/usr/share/elasticsearch/data
+      # - ${REMOTE_MOUNT}/${STACK_NAME}/elasticsearch/data:/usr/share/elasticsearch/data
       - /srv/docker/elasticsearch/data:/usr/share/elasticsearch/data
     deploy:
       replicas: 1
@@ -25,7 +25,7 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash-oss:7.5.2
     volumes:
-      #   ${REMOTE_MOUNT}/${STACK_NAME}/logstash/config:/usr/share/logstash/pipeline/
+      # - ${REMOTE_MOUNT}/${STACK_NAME}/logstash/config:/usr/share/logstash/pipeline/
       - /srv/docker/logstash/config:/usr/share/logstash/pipeline/
     depends_on:
       - elasticsearch
@@ -65,7 +65,7 @@ services:
       labels:
         traefik.port: 5601
         # traefik.frontend.rule: "Host:${LOGS_URL}"
-        traefik.frontend.rule: "Host: kibana.34.78.218.131.nip.io,kibana.130.211.61.65.nip.io,kibana.34.77.99.84.nip.io"
+        traefik.frontend.rule: "Host: kibana.${IP1}.nip.io,kibana.${IP2}.nip.io,kibana.${IP3}.nip.io"
         traefik.docker.network: "proxy"
 
 networks:

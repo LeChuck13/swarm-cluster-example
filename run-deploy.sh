@@ -1,4 +1,5 @@
 #!/bin/bash
+# Executar sh run-deploy.sh valorIP1 valorIP2 valorIP3
 
 IP1=$1
 IP2=$2
